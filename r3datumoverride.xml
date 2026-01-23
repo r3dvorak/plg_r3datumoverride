@@ -2,7 +2,7 @@
 <extension type="plugin" group="system" client="administrator" method="upgrade">
 
 	<name>PLG_SYSTEM_R3DATUMOVERRIDE</name>
-	<version>1.0.14</version>
+	<version>1.0.15</version>
 	<author>Richard Dvořák</author>
 	<authorEmail>dev@r3d.de</authorEmail>
 	<authorUrl>https://r3d.de</authorUrl>
@@ -38,39 +38,53 @@
 
 	<config>
 		<fields name="params">
-			<fieldset name="basic" label="PLG_SYSTEM_R3DATUMOVERRIDE_FIELDSET_BASIC_LABEL">
-				<field 
-					name="header_bg_light" 
-					type="color" 
-					label="PLG_SYSTEM_R3DATUMOVERRIDE_HEADER_BG_LIGHT_LABEL" 
-					description="PLG_SYSTEM_R3DATUMOVERRIDE_HEADER_BG_LIGHT_DESC" 
-					default="" 
+
+			<fieldset name="basic">
+				<field
+					name="header_bg_color"
+					type="color"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_HEADER_BG_COLOR_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_HEADER_BG_COLOR_DESC"
+					default=""
 					format="hex"
 				/>
 				<field 
 					name="header_bg_dark" 
-					type="color" 
-					label="PLG_SYSTEM_R3DATUMOVERRIDE_HEADER_BG_DARK_LABEL" 
-					description="PLG_SYSTEM_R3DATUMOVERRIDE_HEADER_BG_DARK_DESC" 
+					type="color"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_HEADER_BG_DARK_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_HEADER_BG_DARK_DESC"
 					default="" 
 					format="hex"
 				/>
 			</fieldset>
+
 			<fieldset name="typography" label="PLG_SYSTEM_R3DATUMOVERRIDE_FIELDSET_TYPOGRAPHY_LABEL">
-				<field 
-					name="body_font_size" 
-					type="text" 
-					label="PLG_SYSTEM_R3DATUMOVERRIDE_BODY_FONT_SIZE_LABEL" 
-					description="PLG_SYSTEM_R3DATUMOVERRIDE_BODY_FONT_SIZE_DESC" 
-					default="0.95rem" 
+				<field
+					name="body_font_size"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_BODY_FONT_SIZE_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_BODY_FONT_SIZE_DESC"
+					default="0.95rem"
 				/>
-				<field name="body_line_height" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_BODY_LINE_HEIGHT_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_BODY_LINE_HEIGHT_DESC" default="1.4" />
-				<field name="small_font_size" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_SMALL_FONT_SIZE_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_SMALL_FONT_SIZE_DESC" default="0.76rem" />
-				<field 
-					name="heading_font_weight" 
-					type="list" 
-					label="PLG_SYSTEM_R3DATUMOVERRIDE_HEADING_FONT_WEIGHT_LABEL" 
-					description="PLG_SYSTEM_R3DATUMOVERRIDE_HEADING_FONT_WEIGHT_DESC" 
+				<field
+					name="body_line_height"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_BODY_LINE_HEIGHT_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_BODY_LINE_HEIGHT_DESC"
+					default="1.4"
+				/>
+				<field
+					name="small_font_size"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_SMALL_FONT_SIZE_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_SMALL_FONT_SIZE_DESC" 
+					default="0.76rem"
+				/>
+				<field
+					name="heading_font_weight"
+					type="list"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_HEADING_FONT_WEIGHT_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_HEADING_FONT_WEIGHT_DESC"
 					default="500"
 				>
 					<option value="300">Light (300)</option>
@@ -79,37 +93,116 @@
 					<option value="600">Semi-Bold (600)</option>
 					<option value="700">Bold (700)</option>
 				</field>
-				<field name="sidebar_font_size" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_FONT_SIZE_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_FONT_SIZE_DESC" default="0.9rem" />
-				<field name="sidebar_font_weight" type="list" label="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_FONT_WEIGHT_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_FONT_WEIGHT_DESC" default="600">
+				<field
+					name="sidebar_font_size"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_FONT_SIZE_LABEL"
+					default="0.9rem"
+				/>
+				<field
+					name="sidebar_font_weight"
+					type="list"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_FONT_WEIGHT_LABEL"
+					default="600"
+				>
 					<option value="400">Normal (400)</option>
 					<option value="500">Medium (500)</option>
 					<option value="600">Semi-Bold (600)</option>
 					<option value="700">Bold (700)</option>
 				</field>
-				<field name="sidebar_item_height" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_ITEM_HEIGHT_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_ITEM_HEIGHT_DESC" default="36px" />
-				<field 
-					name="quickicon_width" 
-					type="text" 
-					label="PLG_SYSTEM_R3DATUMOVERRIDE_QUICKICON_WIDTH_LABEL" 
-					description="PLG_SYSTEM_R3DATUMOVERRIDE_QUICKICON_WIDTH_DESC" 
-					default="150px" 
+				<field
+					name="sidebar_item_height"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_ITEM_HEIGHT_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_SIDEBAR_ITEM_HEIGHT_DESC"
+					default="36px"
+				/>
+				<field
+					name="quickicon_width"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_QUICKICON_WIDTH_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_QUICKICON_WIDTH_DESC"
+					default="150px"
 				/>
 			</fieldset>
+
 			<fieldset name="tables" label="PLG_SYSTEM_R3DATUMOVERRIDE_FIELDSET_TABLES_LABEL">
-				<field name="table_font_size" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_FONT_SIZE_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_FONT_SIZE_DESC" default="0.875rem" />
-				<field name="table_head_font_size" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_HEAD_FONT_SIZE_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_HEAD_FONT_SIZE_DESC" default="0.9rem" />
-				<field name="table_padding_y" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_PADDING_Y_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_PADDING_Y_DESC" default="0.6rem" />
-				<field name="table_padding_x" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_PADDING_X_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_PADDING_X_DESC" default="0.75rem" />
+				<field
+					name="table_font_size"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_FONT_SIZE_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_FONT_SIZE_DESC"
+					default="0.875rem"
+				/>
+				<field
+					name="table_head_font_size"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_HEAD_FONT_SIZE_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_HEAD_FONT_SIZE_DESC"
+					default="0.9rem"
+				/>
+				<field
+					name="table_padding_y"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_PADDING_Y_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_PADDING_Y_DESC"
+					default="0.6rem"
+				/>
+				<field
+					name="table_padding_x"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_PADDING_X_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_TABLE_PADDING_X_DESC"
+					default="0.75rem"
+				/>
 			</fieldset>
+
 			<fieldset name="buttons" label="PLG_SYSTEM_R3DATUMOVERRIDE_FIELDSET_BUTTONS_LABEL">
-				<field name="btn_font_size" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_FONT_SIZE_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_FONT_SIZE_DESC" default="0.85rem" />
-				<field name="btn_line_height" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_LINE_HEIGHT_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_LINE_HEIGHT_DESC" default="1.25" />
-				<field name="btn_padding_y" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_PADDING_Y_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_PADDING_Y_DESC" default="0.25rem" />
-				<field name="btn_padding_x" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_PADDING_X_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_PADDING_X_DESC" default="0.75rem" />
+				<field
+					name="btn_font_size"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_FONT_SIZE_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_FONT_SIZE_DESC"
+					default="0.85rem"
+				/>
+				<field
+					name="btn_line_height"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_LINE_HEIGHT_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_LINE_HEIGHT_DESC"
+					default="1.25"
+				/>
+				<field
+					name="btn_padding_y"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_PADDING_Y_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_PADDING_Y_DESC"
+					default="0.25rem"
+				/>
+				<field
+					name="btn_padding_x"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_PADDING_X_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_BTN_PADDING_X_DESC"
+					default="0.75rem"
+				/>
 			</fieldset>
+
 			<fieldset name="cards" label="PLG_SYSTEM_R3DATUMOVERRIDE_FIELDSET_CARDS_LABEL">
-				<field name="card_title_font_size" type="text" label="PLG_SYSTEM_R3DATUMOVERRIDE_CARD_TITLE_FONT_SIZE_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_CARD_TITLE_FONT_SIZE_DESC" default="1.1rem" />
-				<field name="card_title_font_weight" type="list" label="PLG_SYSTEM_R3DATUMOVERRIDE_CARD_TITLE_FONT_WEIGHT_LABEL" description="PLG_SYSTEM_R3DATUMOVERRIDE_CARD_TITLE_FONT_WEIGHT_DESC" default="400">
+				<field
+					name="card_title_font_size"
+					type="text"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_CARD_TITLE_FONT_SIZE_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_CARD_TITLE_FONT_SIZE_DESC"
+					default="1.1rem"
+				/>
+				<field
+					name="card_title_font_weight"
+					type="list"
+					label="PLG_SYSTEM_R3DATUMOVERRIDE_CARD_TITLE_FONT_WEIGHT_LABEL"
+					description="PLG_SYSTEM_R3DATUMOVERRIDE_CARD_TITLE_FONT_WEIGHT_DESC"
+					default="400"
+				>
 					<option value="300">Light (300)</option>
 					<option value="400">Normal (400)</option>
 					<option value="500">Medium (500)</option>
@@ -117,6 +210,8 @@
 					<option value="700">Bold (700)</option>
 				</field>
 			</fieldset>
+
 		</fields>
 	</config>
 </extension>
+
