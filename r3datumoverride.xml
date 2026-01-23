@@ -2,7 +2,7 @@
 <extension type="plugin" group="system" client="administrator" method="upgrade">
 
 	<name>plg_r3datumoverride</name>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<author>Richard Dvořák</author>
 	<authorEmail>dev@r3d.de</authorEmail>
 	<authorUrl>https://r3d.de</authorUrl>
