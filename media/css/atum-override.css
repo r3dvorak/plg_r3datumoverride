@@ -1,0 +1,124 @@
+/*
+ * R3D ATUM Override
+ * Backend-only CSS for the ATUM administrator template (Joomla 6+)
+ *
+ * IMPORTANT RULES:
+ * - Never style html or body (breaks Bootstrap 5.3 color modes).
+ * - Always scope to #atum.
+ * - Do NOT override CSS variables related to colors.
+ * - Typography and spacing only.
+ */
+
+/* ---------------------------------------------------------
+   Global backend typography
+   --------------------------------------------------------- */
+#atum {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* ---------------------------------------------------------
+   Headings
+   Weight only, no color overrides
+   --------------------------------------------------------- */
+#atum h1,
+#atum h2,
+#atum h3,
+#atum h4,
+#atum h5,
+#atum h6 {
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   Main navigation (sidebar)
+   --------------------------------------------------------- */
+#atum .main-nav {
+    font-size: 0.9rem;
+}
+
+#atum .main-nav-container li.item.item-level-2>a {
+    min-height: 36px;
+}
+
+#atum .main-nav-container li.item.item-level-3>a {
+    min-height: 34px;
+}
+
+/* ---------------------------------------------------------
+   Control Panel / Dashboard cards
+   --------------------------------------------------------- */
+#atum .cpanel-modules h2,
+#atum .cpanel-modules h3,
+#atum .com_cpanel .card-header,
+#atum .cpanel .card-header h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* ---------------------------------------------------------
+   Quick Icons
+   --------------------------------------------------------- */
+#atum .quick-icons .nav {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+@media (min-width: 576px) {
+    #atum .quick-icons .nav {
+        grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    }
+}
+
+#atum .quick-icons .quickicon a .quickicon-name {
+    font-weight: 400;
+    line-height: 1.1;
+    font-size: 0.8rem;
+}
+
+/* ---------------------------------------------------------
+   Tables
+   Typography and spacing only
+   --------------------------------------------------------- */
+#atum .table thead th,
+#atum .table tbody th {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+#atum .table tbody td {
+    font-size: 0.875rem;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+#atum .table> :not(caption)>*>* {
+    padding: 0.6rem 0.75rem;
+}
+
+/* ---------------------------------------------------------
+   Lists and links inside tables
+   --------------------------------------------------------- */
+#atum .table tbody a:not(.badge),
+#atum .cpanel-modules .list-group-item a {
+    font-size: 0.875rem;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+/* ---------------------------------------------------------
+   Small helper text
+   --------------------------------------------------------- */
+#atum .small {
+    font-size: 0.76rem;
+    line-height: 1.1;
+}
+
+/* ---------------------------------------------------------
+   Buttons
+   --------------------------------------------------------- */
+#atum .btn {
+    font-weight: 400;
+    line-height: 1.25;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+}

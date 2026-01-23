@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" client="administrator" method="upgrade">
+
+	<name>plg_r3datumoverride</name>
+	<version>1.0.3</version>
+	<author>Richard Dvořák</author>
+	<authorEmail>dev@r3d.de</authorEmail>
+	<authorUrl>https://r3d.de</authorUrl>
+	<creationDate>2026-01-23</creationDate>
+	<license>GNU General Public License version 2 or later</license>
+	<description>PLG_R3DATUMOVERRIDE_DESC</description>
+
+	<files>
+		<filename plugin="r3datumoverride">r3datumoverride.php</filename>
+		<folder>src</folder>
+	</files>
+
+	<media destination="plg_system_r3datumoverride">
+		<folder>media</folder>
+	</media>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_r3datumoverride.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_r3datumoverride.sys.ini</language>
+		<language tag="de-DE">language/de-DE/de-DE.plg_system_r3datumoverride.ini</language>
+		<language tag="de-DE">language/de-DE/de-DE.plg_system_r3datumoverride.sys.ini</language>
+	</languages>
+
+	<namespace path="src">Joomla\Plugin\System\R3datumoverride</namespace>
+
+</extension>
