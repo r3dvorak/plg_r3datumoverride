@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     plg_r3datumoverride
- * @version     1.0.3
+ * @version     1.0.5
  * @copyright   Copyright (C) 2026. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Richard Dvořák <dev@r3d.de> - https://r3d.de
@@ -34,38 +34,30 @@ final class R3datumoverride extends CMSPlugin
 	 */
 	public function onBeforeCompileHead(): void
 	{
-		$app = Factory::getApplication();
+		$app = \Joomla\CMS\Factory::getApplication();
 
-		// Hard stop: backend only (defense in depth).
+		// Backend only
 		if (!$app->isClient('administrator')) {
 			return;
 		}
 
 		$document = $app->getDocument();
 
-		// Safety: only affect HTML output.
+		// HTML documents only
 		if ($document->getType() !== 'html') {
 			return;
 		}
 
-		$wa = $document->getWebAssetManager();
-
-		/*
-		 * Register override stylesheet deployed under:
-		 *   /media/plg_system_r3datumoverride/css/atum-override.css
-		 *
-		 * The dependency 'template' ensures this is loaded AFTER the active
-		 * administrator template assets (ATUM), preventing any accidental
-		 * interference with Bootstrap 5.3 color modes.
-		 */
-		$wa->registerStyle(
-			'plg.r3datumoverride.atum',
-			'plg_system_r3datumoverride/css/atum-override.css',
-			[],
-			[],
-			['template']
+		// === HARD DEBUG ===
+		// This must appear in the browser console if the plugin is executed
+		$document->addScriptDeclaration(
+			'console.log("R3D ATUM Override plugin executed (onBeforeCompileHead)");'
 		);
 
-		$wa->useStyle('plg.r3datumoverride.atum');
+		// Optional: also inject CSS directly (no asset manager)
+		$document->addStyleSheet(
+			'/media/plg_system_r3datumoverride/css/atum-override.css'
+		);
 	}
+
 }
