@@ -2,7 +2,7 @@
 <extension type="plugin" group="system" client="administrator" method="upgrade">
 
 	<name>PLG_SYSTEM_R3DATUMOVERRIDE</name>
-	<version>1.0.8</version>
+	<version>1.0.9</version>
 	<author>Richard Dvořák</author>
 	<authorEmail>dev@r3d.de</authorEmail>
 	<authorUrl>https://r3d.de</authorUrl>
@@ -16,9 +16,7 @@
 		<folder>services</folder>
 	</files>
 
-	<media destination="plg_system_r3datumoverride">
-		<folder>media</folder>
-	</media>
+	<media destination="plg_system_r3datumoverride" folder="media" />
 
 	<languages>
 		<language tag="en-GB">language/en-GB/en-GB.plg_system_r3datumoverride.ini</language>
