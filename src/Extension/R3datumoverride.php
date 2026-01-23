@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\CMS\Uri\Uri;
 
 /**
  * Backend-only system plugin for ATUM administrator template overrides (Joomla 6+).
@@ -56,7 +57,7 @@ final class R3datumoverride extends CMSPlugin
 
 		// Optional: also inject CSS directly (no asset manager)
 		$document->addStyleSheet(
-			'/media/plg_system_r3datumoverride/css/atum-override.css'
+			Uri::root(true) . 'media/plg_system_r3datumoverride/css/atum-override.css'
 		);
 	}
 
