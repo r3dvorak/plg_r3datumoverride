@@ -2,7 +2,7 @@
 <extension type="plugin" group="system" client="administrator" method="upgrade">
 
 	<name>PLG_SYSTEM_R3DATUMOVERRIDE</name>
-	<version>1.0.11</version>
+	<version>1.0.12</version>
 	<author>Richard Dvořák</author>
 	<authorEmail>dev@r3d.de</authorEmail>
 	<authorUrl>https://r3d.de</authorUrl>
@@ -56,6 +56,8 @@
 					description="Standard Joomla: 1rem. Dein Default: 0.95rem" 
 					default="0.95rem" 
 				/>
+				<field name="body_line_height" type="text" label="Globale Zeilenhöhe" default="1.4" />
+				<field name="small_font_size" type="text" label="Kleine Schriftgröße (Small)" default="0.76rem" />
 				<field 
 					name="heading_font_weight" 
 					type="list" 
@@ -70,10 +72,13 @@
 					<option value="700">Bold (700)</option>
 				</field>
 				<field name="sidebar_font_size" type="text" label="Sidebar Schriftgröße" default="0.9rem" />
+				<field name="sidebar_font_weight" type="list" label="Sidebar Gewichtung" default="600">
+					<option value="400">Normal (400)</option>
+					<option value="500">Medium (500)</option>
+					<option value="600">Semi-Bold (600)</option>
+					<option value="700">Bold (700)</option>
+				</field>
 				<field name="sidebar_item_height" type="text" label="Sidebar Element-Höhe" description="Minimale Höhe der Menüpunkte." default="36px" />
-				<field name="table_font_size" type="text" label="Tabellen Schriftgröße" default="0.875rem" />
-				<field name="table_padding_y" type="text" label="Tabellen Padding (Vertikal)" default="0.6rem" />
-				<field name="table_padding_x" type="text" label="Tabellen Padding (Horizontal)" default="0.75rem" />
 				<field 
 					name="quickicon_width" 
 					type="text" 
@@ -81,6 +86,28 @@
 					description="Steuert das Grid der Quick Icons. Standard Joomla: 190px. Dein Default: 150px" 
 					default="150px" 
 				/>
+			</fieldset>
+			<fieldset name="tables" label="Tabellen">
+				<field name="table_font_size" type="text" label="Schriftgröße" default="0.875rem" />
+				<field name="table_head_font_size" type="text" label="Kopfzeile Schriftgröße" default="0.9rem" />
+				<field name="table_padding_y" type="text" label="Padding (Vertikal)" default="0.6rem" />
+				<field name="table_padding_x" type="text" label="Padding (Horizontal)" default="0.75rem" />
+			</fieldset>
+			<fieldset name="buttons" label="Buttons">
+				<field name="btn_font_size" type="text" label="Schriftgröße" default="0.85rem" />
+				<field name="btn_line_height" type="text" label="Zeilenhöhe" default="1.25" />
+				<field name="btn_padding_y" type="text" label="Padding (Vertikal)" default="0.25rem" />
+				<field name="btn_padding_x" type="text" label="Padding (Horizontal)" default="0.75rem" />
+			</fieldset>
+			<fieldset name="cards" label="Cards &amp; Dashboard">
+				<field name="card_title_font_size" type="text" label="Titel Schriftgröße" default="1.1rem" />
+				<field name="card_title_font_weight" type="list" label="Titel Gewichtung" default="400">
+					<option value="300">Light (300)</option>
+					<option value="400">Normal (400)</option>
+					<option value="500">Medium (500)</option>
+					<option value="600">Semi-Bold (600)</option>
+					<option value="700">Bold (700)</option>
+				</field>
 			</fieldset>
 		</fields>
 	</config>

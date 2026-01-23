@@ -55,51 +55,101 @@ final class R3datumoverride extends CMSPlugin
 		
 		// Typografie & Layout Einstellungen
 		$bodyFontSize      = $this->params->get('body_font_size', '0.95rem');
+		$bodyLineHeight    = $this->params->get('body_line_height', '1.4');
 		$headingWeight     = $this->params->get('heading_font_weight', '500');
+		$smallFontSize     = $this->params->get('small_font_size', '0.76rem');
+		
+		// Sidebar
 		$sidebarFontSize   = $this->params->get('sidebar_font_size', '0.9rem');
+		$sidebarFontWeight = $this->params->get('sidebar_font_weight', '600');
 		$sidebarItemHeight = $this->params->get('sidebar_item_height', '36px');
+		
+		// Tabellen
 		$tableFontSize     = $this->params->get('table_font_size', '0.875rem');
+		$tableHeadFontSize = $this->params->get('table_head_font_size', '0.9rem');
 		$tablePadY         = $this->params->get('table_padding_y', '0.6rem');
 		$tablePadX         = $this->params->get('table_padding_x', '0.75rem');
+		
+		// Buttons
+		$btnFontSize       = $this->params->get('btn_font_size', '0.85rem');
+		$btnLineHeight     = $this->params->get('btn_line_height', '1.25');
+		$btnPadY           = $this->params->get('btn_padding_y', '0.25rem');
+		$btnPadX           = $this->params->get('btn_padding_x', '0.75rem');
+
+		// Cards
+		$cardTitleSize     = $this->params->get('card_title_font_size', '1.1rem');
+		$cardTitleWeight   = $this->params->get('card_title_font_weight', '400');
+
+		// Quick Icons
 		$quickIconWidth    = $this->params->get('quickicon_width', '150px');
 
 		$css = [];
+		$rootVars = [];
 
+		// --- 1. CSS Variablen definieren (:root) ---
 		if ($headerColor) {
-			// CSS-Variable von ATUM überschreiben
-			$css[] = ":root { --atum-header-bg: {$headerColor} !important; }";
+			$rootVars[] = "--atum-header-bg: {$headerColor} !important;";
 		}
 
-		// 1. Globale Schriftgröße (Joomla 6 nutzt --body-font-size Variable)
-		if ($bodyFontSize) {
-			$css[] = ":root { --body-font-size: {$bodyFontSize} !important; }";
-			$css[] = "body { font-size: var(--body-font-size) !important; }";
+		// Typografie Vars
+		if ($bodyFontSize)   $rootVars[] = "--body-font-size: {$bodyFontSize};";
+		if ($bodyLineHeight) $rootVars[] = "--body-line-height: {$bodyLineHeight};";
+		if ($headingWeight)  $rootVars[] = "--heading-font-weight: {$headingWeight};";
+		if ($smallFontSize)  $rootVars[] = "--small-font-size: {$smallFontSize};";
+
+		// Tabellen Vars
+		if ($tableFontSize)     $rootVars[] = "--table-font-size: {$tableFontSize};";
+		if ($tableHeadFontSize) $rootVars[] = "--table-head-font-size: {$tableHeadFontSize};";
+		if ($tablePadY)         $rootVars[] = "--table-cell-padding-y: {$tablePadY};";
+		if ($tablePadX)         $rootVars[] = "--table-cell-padding-x: {$tablePadX};";
+
+		// Button Vars
+		if ($btnFontSize)   $rootVars[] = "--btn-font-size: {$btnFontSize};";
+		if ($btnLineHeight) $rootVars[] = "--btn-line-height: {$btnLineHeight};";
+		if ($btnPadY)       $rootVars[] = "--btn-padding-y: {$btnPadY};";
+		if ($btnPadX)       $rootVars[] = "--btn-padding-x: {$btnPadX};";
+
+		// Card Vars
+		if ($cardTitleSize)   $rootVars[] = "--card-title-font-size: {$cardTitleSize};";
+		if ($cardTitleWeight) $rootVars[] = "--card-title-font-weight: {$cardTitleWeight};";
+
+		if (!empty($rootVars)) {
+			$css[] = ":root { " . implode(' ', $rootVars) . " }";
 		}
 
-		// 2. Überschriften Gewichtung
-		if ($headingWeight) {
-			$css[] = "h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { font-weight: {$headingWeight} !important; }";
-		}
+		// --- 2. Variablen anwenden (Bindings) ---
+		
+		// Body
+		$css[] = "body { font-size: var(--body-font-size) !important; line-height: var(--body-line-height) !important; }";
+		
+		// Headings
+		$css[] = "h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 { font-weight: var(--heading-font-weight) !important; }";
+		
+		// Small text
+		$css[] = "small, .small { font-size: var(--small-font-size) !important; }";
 
-		// 3. Sidebar (Schrift & Höhe)
-		if ($sidebarFontSize) {
-			$css[] = ".main-nav { font-size: {$sidebarFontSize} !important; }";
+		// Tabellen
+		$css[] = ".table { font-size: var(--table-font-size) !important; }";
+		$css[] = ".table thead th { font-size: var(--table-head-font-size) !important; }";
+		$css[] = ".table > :not(caption) > * > * { padding: var(--table-cell-padding-y) var(--table-cell-padding-x) !important; }";
+
+		// Buttons
+		$css[] = ".btn { font-size: var(--btn-font-size) !important; line-height: var(--btn-line-height) !important; padding: var(--btn-padding-y) var(--btn-padding-x) !important; }";
+
+		// Cards
+		$css[] = ".card-title { font-size: var(--card-title-font-size) !important; font-weight: var(--card-title-font-weight) !important; }";
+
+		// Sidebar (Spezifisch)
+		if ($sidebarFontSize || $sidebarFontWeight) {
+			$sSize = $sidebarFontSize ?: '0.9rem';
+			$sWeight = $sidebarFontWeight ?: '600';
+			$css[] = ".sidebar-nav li, .main-nav li { font-size: {$sSize} !important; font-weight: {$sWeight} !important; }";
 		}
 		if ($sidebarItemHeight) {
 			$css[] = ".sidebar-wrapper .item > a { min-block-size: {$sidebarItemHeight} !important; }";
 		}
 
-		// 4. Tabellen (Schrift & Padding)
-		if ($tableFontSize) {
-			$css[] = ".table > :not(caption) > * > * { font-size: {$tableFontSize} !important; }";
-		}
-		if ($tablePadY || $tablePadX) {
-			$py = $tablePadY ?: '0.75rem';
-			$px = $tablePadX ?: '1rem';
-			$css[] = ".table > :not(caption) > * > * { padding: {$py} {$px} !important; }";
-		}
-
-		// 5. Quick Icons Grid
+		// Quick Icons Grid
 		if ($quickIconWidth) {
 			// auto-fit statt auto-fill sorgt für besseres Verhalten bei wenigen Icons
 			$css[] = ".quick-icons .nav { grid-template-columns: repeat(auto-fit, minmax({$quickIconWidth}, 1fr)) !important; }";
