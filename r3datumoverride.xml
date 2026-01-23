@@ -16,7 +16,9 @@
 		<folder>services</folder>
 	</files>
 
-	<media destination="plg_system_r3datumoverride" folder="media" />
+	<media destination="plg_system_r3datumoverride">
+		<folder>css</folder>
+	</media>
 
 	<languages>
 		<language tag="en-GB">language/en-GB/en-GB.plg_system_r3datumoverride.ini</language>
