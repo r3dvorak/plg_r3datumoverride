@@ -43,6 +43,7 @@ This plugin provides a **clean, update-safe, backend-only solution** to:
 
 ## 📂 Plugin Structure
 
+```
 plg_r3datumoverride/
 ├─ r3datumoverride.php
 ├─ r3datumoverride.xml
@@ -56,6 +57,7 @@ plg_r3datumoverride/
 │ ├─ de-DE/
 │ └─ en-GB/
 └─ README.md
+```
 
 ---
 
