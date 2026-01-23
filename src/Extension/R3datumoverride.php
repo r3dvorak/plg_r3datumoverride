@@ -57,7 +57,7 @@ final class R3datumoverride extends CMSPlugin
 
 		// Optional: also inject CSS directly (no asset manager)
 		$document->addStyleSheet(
-			Uri::root(true) . 'media/plg_system_r3datumoverride/css/atum-override.css'
+			Uri::root() . 'media/plg_system_r3datumoverride/css/atum-override.css'
 		);
 	}
 
