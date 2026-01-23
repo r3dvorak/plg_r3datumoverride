@@ -49,12 +49,6 @@ final class R3datumoverride extends CMSPlugin
 			return;
 		}
 
-		// === HARD DEBUG ===
-		// This must appear in the browser console if the plugin is executed
-		$document->addScriptDeclaration(
-			'console.log("R3D ATUM Override plugin executed (onBeforeCompileHead)");'
-		);
-
 		// Optional: also inject CSS directly (no asset manager)
 		$document->addStyleSheet(
 			Uri::root() . 'media/plg_system_r3datumoverride/css/atum-override.css'

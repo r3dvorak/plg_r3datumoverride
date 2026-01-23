@@ -2,7 +2,7 @@
 <extension type="plugin" group="system" client="administrator" method="upgrade">
 
 	<name>PLG_SYSTEM_R3DATUMOVERRIDE</name>
-	<version>1.0.9</version>
+	<version>1.0.11</version>
 	<author>Richard Dvořák</author>
 	<authorEmail>dev@r3d.de</authorEmail>
 	<authorUrl>https://r3d.de</authorUrl>
@@ -10,8 +10,11 @@
 	<license>GNU General Public License version 2 or later</license>
 	<description>PLG_SYSTEM_R3DATUMOVERRIDE_DESC</description>
 
+	<scriptfile>script.php</scriptfile>
+
 	<files>
 		<filename plugin="r3datumoverride">r3datumoverride.php</filename>
+		<filename>script.php</filename>
 		<folder>src</folder>
 		<folder>services</folder>
 	</files>

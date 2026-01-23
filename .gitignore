@@ -1,0 +1,12 @@
+# Editor / OS
+.vscode/
+.DS_Store
+
+# Build artifacts
+/dist/
+
+# Local tooling
+/build/
+
+# Logs
+*.log
