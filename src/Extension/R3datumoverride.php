@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     plg_r3datumoverride
- * @version     1.0.5
+ * @version     1.0.7
  * @copyright   Copyright (C) 2026. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Richard Dvořák <dev@r3d.de> - https://r3d.de
