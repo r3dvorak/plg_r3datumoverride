@@ -2,7 +2,7 @@
 <extension type="plugin" group="system" client="administrator" method="upgrade">
 
 	<name>PLG_SYSTEM_R3DATUMOVERRIDE</name>
-	<version>1.0.13</version>
+	<version>1.0.14</version>
 	<author>Richard Dvořák</author>
 	<authorEmail>dev@r3d.de</authorEmail>
 	<authorUrl>https://r3d.de</authorUrl>
@@ -38,7 +38,7 @@
 
 	<config>
 		<fields name="params">
-			<fieldset name="basic">
+			<fieldset name="basic" label="PLG_SYSTEM_R3DATUMOVERRIDE_FIELDSET_BASIC_LABEL">
 				<field 
 					name="header_bg_light" 
 					type="color" 
