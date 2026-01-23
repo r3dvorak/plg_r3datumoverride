@@ -50,8 +50,9 @@ final class R3datumoverride extends CMSPlugin
 		}
 
 		// --- Konfiguration auslesen und anwenden ---
-		// Beispiel: Header-Farbe aus den Plugin-Einstellungen holen
-		$headerColor = $this->params->get('header_bg_color', '');
+		// Header-Farben für Light und Dark Mode
+		$headerLight = $this->params->get('header_bg_light', '');
+		$headerDark  = $this->params->get('header_bg_dark', '');
 		
 		// Typografie & Layout Einstellungen
 		$bodyFontSize      = $this->params->get('body_font_size', '0.95rem');
@@ -87,8 +88,8 @@ final class R3datumoverride extends CMSPlugin
 		$rootVars = [];
 
 		// --- 1. CSS Variablen definieren (:root) ---
-		if ($headerColor) {
-			$rootVars[] = "--atum-header-bg: {$headerColor} !important;";
+		if ($headerLight) {
+			$rootVars[] = "--atum-header-bg: {$headerLight} !important;";
 		}
 
 		// Typografie Vars
@@ -115,6 +116,11 @@ final class R3datumoverride extends CMSPlugin
 
 		if (!empty($rootVars)) {
 			$css[] = ":root { " . implode(' ', $rootVars) . " }";
+		}
+
+		// --- 1b. Dark Mode Overrides ---
+		if ($headerDark) {
+			$css[] = '[data-bs-theme="dark"] { --atum-header-bg: ' . $headerDark . ' !important; }';
 		}
 
 		// --- 2. Variablen anwenden (Bindings) ---
