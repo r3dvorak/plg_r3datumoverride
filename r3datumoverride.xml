@@ -36,4 +36,52 @@
 
 	<namespace path="src">Joomla\Plugin\System\R3datumoverride</namespace>
 
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field 
+					name="header_bg_color" 
+					type="color" 
+					label="Header Hintergrundfarbe" 
+					description="Überschreibt die ATUM Header-Farbe." 
+					default="" 
+					format="hex"
+				/>
+			</fieldset>
+			<fieldset name="typography" label="Typografie &amp; Layout">
+				<field 
+					name="body_font_size" 
+					type="text" 
+					label="Globale Schriftgröße" 
+					description="Standard Joomla: 1rem. Dein Default: 0.95rem" 
+					default="0.95rem" 
+				/>
+				<field 
+					name="heading_font_weight" 
+					type="list" 
+					label="Überschriften Gewichtung" 
+					description="Standard Joomla: 700 (Bold). Dein Default: 500 (Medium)" 
+					default="500"
+				>
+					<option value="300">Light (300)</option>
+					<option value="400">Normal (400)</option>
+					<option value="500">Medium (500)</option>
+					<option value="600">Semi-Bold (600)</option>
+					<option value="700">Bold (700)</option>
+				</field>
+				<field name="sidebar_font_size" type="text" label="Sidebar Schriftgröße" default="0.9rem" />
+				<field name="sidebar_item_height" type="text" label="Sidebar Element-Höhe" description="Minimale Höhe der Menüpunkte." default="36px" />
+				<field name="table_font_size" type="text" label="Tabellen Schriftgröße" default="0.875rem" />
+				<field name="table_padding_y" type="text" label="Tabellen Padding (Vertikal)" default="0.6rem" />
+				<field name="table_padding_x" type="text" label="Tabellen Padding (Horizontal)" default="0.75rem" />
+				<field 
+					name="quickicon_width" 
+					type="text" 
+					label="Quick Icon Min-Breite" 
+					description="Steuert das Grid der Quick Icons. Standard Joomla: 190px. Dein Default: 150px" 
+					default="150px" 
+				/>
+			</fieldset>
+		</fields>
+	</config>
 </extension>
