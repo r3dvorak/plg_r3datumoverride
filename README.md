@@ -49,6 +49,8 @@ The publish wrapper runs the shared download and update-server scripts:
 pwsh -File ".\scripts\publish-r3datumoverride.ps1"
 ```
 
+If plugin-specific Phoca category IDs are available in the ENV file, the wrapper prefers them over the generic language category IDs so the release lands in the PhocaDownload Plugins area.
+
 ## Notes
 
 - The plugin runs only in the administrator client.

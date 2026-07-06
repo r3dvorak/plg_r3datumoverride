@@ -14,6 +14,7 @@ Lokale Arbeitsregeln fuer `plg_r3datumoverride`.
 - Keine Doppelanlage im Update-Server.
 - Wenn eine vorhandene File-ID existiert, muss exakt diese ID aktualisiert werden.
 - Keine fremden IDs, URLs, Dateinamen oder Kategorien uebernehmen.
+- Wenn Plugin-spezifische Phoca-Kategorie-IDs vorhanden sind (`R3D_PHOCA_CATEGORY_ID_PLUGIN_EN` etc.), muessen diese fuer den Plugin-Release bevorzugt werden.
 - Keine Sprachvariante raten. Fuer diesen Releasepfad ist `en` die Standard-Release-Sprache, weitere Sprachen nur nach expliziter Pruefung.
 - Vor scharfem Upload immer Dry-Run oder eine explizite Pruefung ausfuehren.
 - ZIP, Update-XML und Remote-Eintrag muessen dieselbe Version tragen.

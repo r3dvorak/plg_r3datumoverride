@@ -95,6 +95,63 @@ function Upload-FileFtp {
     }
 }
 
+function Get-ReleaseLanguages {
+    param([hashtable]$EnvMap)
+
+    $langsRaw = if ($EnvMap.ContainsKey('R3D_RELEASE_LANGS')) { [string]$EnvMap['R3D_RELEASE_LANGS'] } else { 'en' }
+    $langs = @()
+    foreach ($part in $langsRaw.Split(',')) {
+        $lang = $part.Trim().ToLower()
+        if ($lang) {
+            $langs += $lang
+        }
+    }
+
+    return @($langs | Select-Object -Unique)
+}
+
+function New-PhocaEnvOverlayFile {
+    param(
+        [string]$SourcePath,
+        [hashtable]$EnvMap,
+        [string[]]$Languages
+    )
+
+    $pluginCategoryKeys = @{}
+    foreach ($lang in $Languages) {
+        $pluginKey = "R3D_PHOCA_CATEGORY_ID_PLUGIN_{0}" -f $lang.ToUpper()
+        $genericKey = "R3D_PHOCA_CATEGORY_ID_{0}" -f $lang.ToUpper()
+        if ($EnvMap.ContainsKey($pluginKey) -and -not [string]::IsNullOrWhiteSpace([string]$EnvMap[$pluginKey])) {
+            $pluginCategoryKeys[$genericKey] = [string]$EnvMap[$pluginKey]
+        }
+    }
+
+    if ($pluginCategoryKeys.Count -eq 0) {
+        return $SourcePath
+    }
+
+    $tmpPath = Join-Path ([System.IO.Path]::GetTempPath()) ("r3datumoverride-phoca-env-{0}.env" -f ([guid]::NewGuid().ToString('N')))
+    $lines = Get-Content -LiteralPath $SourcePath
+    $updated = New-Object System.Collections.Generic.List[string]
+
+    foreach ($line in $lines) {
+        $trimmed = $line.Trim()
+        if ($trimmed -and -not $trimmed.StartsWith('#') -and $trimmed.Contains('=')) {
+            $eq = $trimmed.IndexOf('=')
+            $key = $trimmed.Substring(0, $eq).Trim()
+            if ($pluginCategoryKeys.ContainsKey($key)) {
+                $updated.Add(("{0}={1}" -f $key, $pluginCategoryKeys[$key]))
+                continue
+            }
+        }
+
+        $updated.Add($line)
+    }
+
+    Set-Content -LiteralPath $tmpPath -Value $updated -Encoding UTF8
+    return $tmpPath
+}
+
 function Invoke-CheckedScript {
     param(
         [string]$ScriptPath,
@@ -137,6 +194,8 @@ $createDownloadScript = Join-Path $resolvedToolsRoot '31-create-download.ps1'
 $publishUpdateScript = Join-Path $resolvedToolsRoot '32-publish-updateserver.ps1'
 $projectJsonPath = Join-Path $resolvedProjectRoot 'project.json'
 $envMap = Load-EnvFile -Path $resolvedEnvPath
+$releaseLanguages = Get-ReleaseLanguages -EnvMap $envMap
+$effectiveEnvPath = New-PhocaEnvOverlayFile -SourcePath $resolvedEnvPath -EnvMap $envMap -Languages $releaseLanguages
 
 if (-not (Test-Path -LiteralPath $projectJsonPath -PathType Leaf)) {
     throw "project.json missing: $projectJsonPath"
@@ -153,7 +212,7 @@ $updateUrl = $updateUrl.Trim()
 Write-Host '[1/3] Create release plan and upload ZIP...' -ForegroundColor Cyan
 $createArgs = @{
     ProjectRoot = $resolvedProjectRoot
-    EnvFile = $resolvedEnvPath
+    EnvFile = $effectiveEnvPath
 }
 if ($DryRun) {
     $createArgs['DryRun'] = $true
@@ -169,6 +228,10 @@ if ($DryRun) {
     $updateArgs['DryRun'] = $true
 }
 Invoke-CheckedScript -ScriptPath $publishUpdateScript -Arguments $updateArgs
+
+if ($effectiveEnvPath -ne $resolvedEnvPath -and (Test-Path -LiteralPath $effectiveEnvPath -PathType Leaf)) {
+    Remove-Item -LiteralPath $effectiveEnvPath -Force
+}
 
 if (-not $DryRun) {
     $xmlPath = Join-Path $resolvedProjectRoot '05_updates\plg_system_r3datumoverride.xml'
