@@ -3,10 +3,15 @@
 .DS_Store
 
 # Build artifacts
-/dist/
+/02_build/
+/04_dist/
+/05_updates/
 
 # Local tooling
 /build/
+/dist/
+/scripts/*.log
 
 # Logs
+/03_docs/
 *.log

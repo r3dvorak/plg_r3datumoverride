@@ -1,10 +1,10 @@
 <?php
 /**
- * @package     plg_r3datumoverride
- * @version     1.0.7
+ * @package     plg_system_r3datumoverride
+ * @version     1.0.16
  * @copyright   Copyright (C) 2026. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * @author      Richard Dvořák <dev@r3d.de> - https://r3d.de
+ * @author      Richard Dvorak <info@r3d.de> - https://extensions.r3d.de
  */
 
 defined('_JEXEC') or die;

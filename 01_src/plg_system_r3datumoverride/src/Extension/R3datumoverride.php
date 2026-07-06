@@ -1,10 +1,10 @@
 <?php
 /**
- * @package     plg_r3datumoverride
- * @version     1.0.7
+ * @package     plg_system_r3datumoverride
+ * @version     1.0.16
  * @copyright   Copyright (C) 2026. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * @author      Richard Dvořák <dev@r3d.de> - https://r3d.de
+ * @author      Richard Dvorak <info@r3d.de> - https://extensions.r3d.de
  */
 
 namespace Joomla\Plugin\System\R3datumoverride\Extension;
@@ -35,7 +35,7 @@ final class R3datumoverride extends CMSPlugin
 	 */
 	public function onBeforeCompileHead(): void
 	{
-		$app = \Joomla\CMS\Factory::getApplication();
+		$app = Factory::getApplication();
 
 		// Backend only
 		if (!$app->isClient('administrator')) {
@@ -49,9 +49,8 @@ final class R3datumoverride extends CMSPlugin
 			return;
 		}
 
-		// --- Konfiguration auslesen und anwenden ---
-		// Header-Farben für Light und Dark Mode
-		$headerLight = $this->params->get('header_bg_light', '');
+		// --- Configuration ---
+		$headerLight = $this->params->get('header_bg_color', $this->params->get('header_bg_light', ''));
 		$headerDark  = $this->params->get('header_bg_dark', '');
 		
 		// Typografie & Layout Einstellungen

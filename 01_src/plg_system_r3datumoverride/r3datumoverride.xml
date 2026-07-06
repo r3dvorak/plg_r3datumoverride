@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="plugin" group="system" client="administrator" method="upgrade">
-
+<extension type="plugin" group="system" client="administrator" method="upgrade" version="5.0">
 	<name>PLG_SYSTEM_R3DATUMOVERRIDE</name>
-	<version>1.0.15</version>
-	<author>Richard Dvořák</author>
-	<authorEmail>dev@r3d.de</authorEmail>
-	<authorUrl>https://r3d.de</authorUrl>
 	<creationDate>2026-01-23</creationDate>
-	<license>GNU General Public License version 2 or later</license>
+	<author>Richard Dvorak</author>
+	<authorEmail>info@r3d.de</authorEmail>
+	<authorUrl>https://extensions.r3d.de</authorUrl>
+	<copyright>2026 Richard Dvorak</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.0.16</version>
 	<description>PLG_SYSTEM_R3DATUMOVERRIDE_DESC</description>
 
 	<scriptfile>script.php</scriptfile>
@@ -33,6 +33,10 @@
 	<services>
 		<service provider="services/provider.php" />
 	</services>
+
+	<updateservers>
+		<server type="extension" priority="1" name="R3D ATUM Override Update Server">https://extensions.r3d.de/phocadownload/plg_system_r3datumoverride.xml</server>
+	</updateservers>
 
 	<namespace path="src">Joomla\Plugin\System\R3datumoverride</namespace>
 
@@ -214,4 +218,3 @@
 		</fields>
 	</config>
 </extension>
-

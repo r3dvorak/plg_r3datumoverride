@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.3",
+  "project": {
+    "name": "R3D ATUM Override",
+    "slug": "r3datumoverride",
+    "title": "R3D ATUM Override",
+    "artifactBaseName": "plg_system_r3datumoverride",
+    "vendor": "r3d",
+    "description": "Joomla system plugin that customizes ATUM administrator styling without touching core files.",
+    "updateServerUrl": "https://extensions.r3d.de/phocadownload/plg_system_r3datumoverride.xml",
+    "changelogUrl": "https://github.com/r3dvorak/plg_r3datumoverride/blob/main/CHANGELOG.md",
+    "author": {
+      "name": "Richard Dvorak",
+      "email": "info@r3d.de",
+      "url": "https://extensions.r3d.de"
+    },
+    "year": 2026,
+    "license": "GPL-2.0-or-later",
+    "defaults": {
+      "extensionTitle": "R3D ATUM Override",
+      "languagePrefix": "PLG_SYSTEM_R3DATUMOVERRIDE",
+      "dbTablePrefix": "r3d",
+      "version": "1.0.16",
+      "stage": "",
+      "author": "Richard Dvorak",
+      "authorEmail": "info@r3d.de",
+      "authorUrl": "https://extensions.r3d.de",
+      "copyright": "2026 Richard Dvorak",
+      "license": "GNU General Public License version 2 or later; see LICENSE.txt",
+      "creationDate": "2026-01-23"
+    }
+  },
+  "paths": {
+    "src": "01_src",
+    "build": "02_build",
+    "dist": "04_dist",
+    "updates": "05_updates"
+  }
+}
