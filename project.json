@@ -20,7 +20,7 @@
       "extensionTitle": "R3D ATUM Override",
       "languagePrefix": "PLG_SYSTEM_R3DATUMOVERRIDE",
       "dbTablePrefix": "r3d",
-      "version": "1.0.16",
+      "version": "1.0.17",
       "stage": "",
       "author": "Richard Dvorak",
       "authorEmail": "info@r3d.de",

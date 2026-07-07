@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog.
 
+## [1.0.17] - 2026-07-07
+
+### Changed
+
+- Added configurable ATUM header text, header icon, sidebar background, and subheader background colors.
+- Switched header background overrides to the real ATUM selectors so the saved settings visibly apply in the backend.
+- Cleaned up the repository layout so the legacy outer build tree is no longer part of the active workspace.
+
 ## [1.0.16] - 2026-07-06
 
 ### Changed

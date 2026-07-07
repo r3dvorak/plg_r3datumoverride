@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     plg_system_r3datumoverride
- * @version     1.0.16
+ * @version     1.0.17
  * @copyright   Copyright (C) 2026. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Richard Dvorak <info@r3d.de> - https://extensions.r3d.de
@@ -50,8 +50,12 @@ final class R3datumoverride extends CMSPlugin
 		}
 
 		// --- Configuration ---
-		$headerLight = $this->params->get('header_bg_color', $this->params->get('header_bg_light', ''));
-		$headerDark  = $this->params->get('header_bg_dark', '');
+		$headerLight   = (string) $this->params->get('header_bg_color', '');
+		$headerDark    = (string) $this->params->get('header_bg_dark', '');
+		$headerText    = (string) $this->params->get('header_text_color', '');
+		$headerIcon    = (string) $this->params->get('header_icon_color', '');
+		$sidebarBg     = (string) $this->params->get('sidebar_bg_color', '');
+		$subheadBg     = (string) $this->params->get('subhead_bg_color', '');
 		
 		// Typografie & Layout Einstellungen
 		$bodyFontSize      = $this->params->get('body_font_size', '0.95rem');
@@ -86,11 +90,6 @@ final class R3datumoverride extends CMSPlugin
 		$css = [];
 		$rootVars = [];
 
-		// --- 1. CSS Variablen definieren (:root) ---
-		if ($headerLight) {
-			$rootVars[] = "--atum-header-bg: {$headerLight} !important;";
-		}
-
 		// Typografie Vars
 		if ($bodyFontSize)   $rootVars[] = "--body-font-size: {$bodyFontSize};";
 		if ($bodyLineHeight) $rootVars[] = "--body-line-height: {$bodyLineHeight};";
@@ -117,9 +116,34 @@ final class R3datumoverride extends CMSPlugin
 			$css[] = ":root { " . implode(' ', $rootVars) . " }";
 		}
 
-		// --- 1b. Dark Mode Overrides ---
+		// --- 1. Header overrides ---
+		// ATUM uses #header and its own --template-bg-dark variables, not --atum-header-bg.
+		if ($headerLight) {
+			$css[] = '#header.header { background-color: ' . $headerLight . ' !important; }';
+			$css[] = '#header.header .logo { background-color: inherit !important; }';
+		}
+
+		// Only useful on ATUM versions that actually render data-bs-theme="dark".
 		if ($headerDark) {
-			$css[] = '[data-bs-theme="dark"] { --atum-header-bg: ' . $headerDark . ' !important; }';
+			$css[] = '[data-bs-theme="dark"] #header.header { background-color: ' . $headerDark . ' !important; }';
+			$css[] = '[data-bs-theme="dark"] #header.header .logo { background-color: inherit !important; }';
+		}
+
+		if ($headerText) {
+			$css[] = '#header.header, #header.header .page-title, #header.header .header-item-content, #header.header .header-item-content a, #header.header .header-item-content button, #header.header .logo { color: ' . $headerText . ' !important; }';
+		}
+
+		if ($headerIcon) {
+			$css[] = '#header.header .header-item-icon > *, #header.header .header-item-content .btn, #header.header .header-item-content [class^="icon-"], #header.header .header-item-content [class*=" icon-"], #header.header .header-item-content [class^="fa-"], #header.header .header-item-content [class*=" fa-"] { color: ' . $headerIcon . ' !important; }';
+		}
+
+		if ($sidebarBg) {
+			$css[] = ':root { --template-sidebar-bg: ' . $sidebarBg . ' !important; }';
+			$css[] = '.sidebar-wrapper { background-color: ' . $sidebarBg . ' !important; }';
+		}
+
+		if ($subheadBg) {
+			$css[] = '.subhead { background: ' . $subheadBg . ' !important; background-image: none !important; }';
 		}
 
 		// --- 2. Variablen anwenden (Bindings) ---

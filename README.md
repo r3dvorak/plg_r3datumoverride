@@ -1,6 +1,6 @@
 # R3D ATUM Override
 
-Current release: `1.0.16`.
+Current release: `1.0.17`.
 
 Backend-only Joomla system plugin for adjusting typography and spacing in the ATUM administrator template without touching Joomla core files.
 
@@ -55,4 +55,4 @@ If plugin-specific Phoca category IDs are available in the ENV file, the wrapper
 
 - The plugin runs only in the administrator client.
 - Runtime CSS is loaded from `media/plg_system_r3datumoverride/css/atum-override.css`.
-- The manifest and the PHP bootstrap are versioned with `1.0.16`.
+- The manifest and the PHP bootstrap are versioned with `1.0.17`.
