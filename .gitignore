@@ -11,6 +11,7 @@
 /build/
 /dist/
 /scripts/*.log
+*.code-workspace
 
 # Logs
 /03_docs/

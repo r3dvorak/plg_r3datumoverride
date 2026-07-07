@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog.
 
+## [Unreleased]
+
+## [1.0.18] - 2026-07-07
+
+### Changed
+
+- Added a color reset button in the plugin configuration.
+- Prefilled the ATUM color fields with the current template defaults.
+
 ## [1.0.17] - 2026-07-07
 
 ### Changed

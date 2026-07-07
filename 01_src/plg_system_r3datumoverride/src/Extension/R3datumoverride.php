@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     plg_system_r3datumoverride
- * @version     1.0.17
+ * @version     1.0.18
  * @copyright   Copyright (C) 2026. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Richard Dvorak <info@r3d.de> - https://extensions.r3d.de
@@ -24,6 +24,15 @@ use Joomla\CMS\Uri\Uri;
  */
 final class R3datumoverride extends CMSPlugin
 {
+	public const ATUM_COLOR_DEFAULTS = [
+		'header_bg_color'   => '#132f53',
+		'header_bg_dark'    => '#0a0e13',
+		'header_text_color' => '#ffffff',
+		'header_icon_color' => '#ffffff',
+		'sidebar_bg_color'  => '#132f53',
+		'subhead_bg_color'  => '#ffffff',
+	];
+
 	/**
 	 * Inject backend-only CSS via WebAssetManager.
 	 *
@@ -50,12 +59,12 @@ final class R3datumoverride extends CMSPlugin
 		}
 
 		// --- Configuration ---
-		$headerLight   = (string) $this->params->get('header_bg_color', '');
-		$headerDark    = (string) $this->params->get('header_bg_dark', '');
-		$headerText    = (string) $this->params->get('header_text_color', '');
-		$headerIcon    = (string) $this->params->get('header_icon_color', '');
-		$sidebarBg     = (string) $this->params->get('sidebar_bg_color', '');
-		$subheadBg     = (string) $this->params->get('subhead_bg_color', '');
+		$headerLight   = $this->getColorParam('header_bg_color');
+		$headerDark    = $this->getColorParam('header_bg_dark');
+		$headerText    = $this->getColorParam('header_text_color');
+		$headerIcon    = $this->getColorParam('header_icon_color');
+		$sidebarBg     = $this->getColorParam('sidebar_bg_color');
+		$subheadBg     = $this->getColorParam('subhead_bg_color');
 		
 		// Typografie & Layout Einstellungen
 		$bodyFontSize      = $this->params->get('body_font_size', '0.95rem');
@@ -193,6 +202,13 @@ final class R3datumoverride extends CMSPlugin
 		$document->addStyleSheet(
 			Uri::root() . 'media/plg_system_r3datumoverride/css/atum-override.css'
 		);
+	}
+
+	private function getColorParam(string $name): string
+	{
+		$value = trim((string) $this->params->get($name, self::ATUM_COLOR_DEFAULTS[$name] ?? ''));
+
+		return $value !== '' ? $value : (self::ATUM_COLOR_DEFAULTS[$name] ?? '');
 	}
 
 }
