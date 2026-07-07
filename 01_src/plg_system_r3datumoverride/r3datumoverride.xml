@@ -7,7 +7,7 @@
 	<authorUrl>https://extensions.r3d.de</authorUrl>
 	<copyright>2026 Richard Dvorak</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.0.20</version>
+	<version>1.0.21</version>
 	<description>PLG_SYSTEM_R3DATUMOVERRIDE_DESC</description>
 
 	<scriptfile>script.php</scriptfile>
@@ -91,12 +91,6 @@
 					description="PLG_SYSTEM_R3DATUMOVERRIDE_SUBHEAD_BG_COLOR_DESC"
 					default="#ffffff"
 					format="hex"
-				/>
-				<field
-					name="color_reset"
-					type="resetcolors"
-					label="PLG_SYSTEM_R3DATUMOVERRIDE_COLOR_CLEAR_LABEL"
-					description="PLG_SYSTEM_R3DATUMOVERRIDE_COLOR_CLEAR_DESC"
 				/>
 			</fieldset>
 

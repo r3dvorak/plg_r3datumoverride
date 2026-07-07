@@ -6,12 +6,11 @@ The format is based on Keep a Changelog.
 
 ## [Unreleased]
 
-## [1.0.20] - 2026-07-08
+## [1.0.21] - 2026-07-08
 
 ### Changed
 
-- Reworked the color action into a true button.
-- The button now clears the color fields so they fall back to the ATUM defaults on save.
+- Removed the color reset field from the plugin configuration.
 
 ## [1.0.17] - 2026-07-07
 
