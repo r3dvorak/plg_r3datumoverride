@@ -6,12 +6,12 @@ The format is based on Keep a Changelog.
 
 ## [Unreleased]
 
-## [1.0.19] - 2026-07-08
+## [1.0.20] - 2026-07-08
 
 ### Changed
 
-- Added a color reset button in the plugin configuration.
-- Prefilled the ATUM color fields with the current template defaults.
+- Reworked the color action into a true button.
+- The button now clears the color fields so they fall back to the ATUM defaults on save.
 
 ## [1.0.17] - 2026-07-07
 
