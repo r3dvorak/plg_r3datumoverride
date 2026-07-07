@@ -7,7 +7,7 @@
 	<authorUrl>https://extensions.r3d.de</authorUrl>
 	<copyright>2026 Richard Dvorak</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.0.18</version>
+	<version>1.0.19</version>
 	<description>PLG_SYSTEM_R3DATUMOVERRIDE_DESC</description>
 
 	<scriptfile>script.php</scriptfile>

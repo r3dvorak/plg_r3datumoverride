@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     plg_system_r3datumoverride
- * @version     1.0.18
+ * @version     1.0.19
  * @copyright   Copyright (C) 2026. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Richard Dvorak <info@r3d.de> - https://extensions.r3d.de
@@ -20,17 +20,23 @@ final class ResetcolorsField extends FormField
 {
 	protected $type = 'Resetcolors';
 
+	protected function getLabel(): string
+	{
+		return '';
+	}
+
 	protected function getInput(): string
 	{
 		$this->registerScript();
 		$label = htmlspecialchars(Text::_('PLG_SYSTEM_R3DATUMOVERRIDE_COLOR_RESET_LABEL'), ENT_QUOTES, 'UTF-8');
 		$title = htmlspecialchars(Text::_('PLG_SYSTEM_R3DATUMOVERRIDE_COLOR_RESET_DESC'), ENT_QUOTES, 'UTF-8');
 
-		return sprintf(
-			'<button type="button" class="btn btn-outline-secondary js-r3datumoverride-reset-colors" title="%2$s">%1$s</button>',
-			$label,
-			$title
-		);
+		return '<div class="d-flex align-items-center gap-2">'
+			. '<button type="button" class="btn btn-sm btn-outline-secondary js-r3datumoverride-reset-colors" title="' . $title . '">'
+			. '<span class="icon-refresh" aria-hidden="true"></span> '
+			. $label
+			. '</button>'
+			. '</div>';
 	}
 
 	private function registerScript(): void
